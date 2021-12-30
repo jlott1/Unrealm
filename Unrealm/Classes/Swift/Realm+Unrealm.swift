@@ -254,6 +254,9 @@ public extension Realm {
 			let typeName = types.1
 			let realmClassName = realmable.realmClassPrefix + typeName
 
+            guard objectsAndRealmables[realmClassName] == nil else {
+                continue
+            }
 			objectsAndRealmables[realmClassName] = realmable
 
 			guard let clazz: AnyClass = NSClassFromString(realmable.realmClassPrefix + typeName) else {continue}
@@ -268,7 +271,7 @@ public extension Realm {
 }
 
 internal func exctractTypeComponents<Subject>(from subject: Subject) -> (String, String) {
-	var fullType = String(describing: subject)
+    var fullType = String(describing: subject).replacingOccurrences(of: "Optional", with: "")
 	if let match = fullType.range(of: "[a-zA-Z0-9_.]+", options: .regularExpression) {
 		fullType = String(fullType[match])
 	}
@@ -280,9 +283,13 @@ internal func exctractTypeComponents<Subject>(from subject: Subject) -> (String,
 
 fileprivate func addProperties(of value: RealmableBase, to className: AnyClass, ignoreProperties: [String]) {
 	let mirror = Mirror(reflecting: value)
-	let children = mirror.children.reversed()
+//	let children = mirror.children.reversed()
+    let children = mirror.childrenIncludingSuperclass(subject: value)
+
 	for child in children {
 		guard let name = child.label else {continue}
+        if ignoreProperties.contains(name) {continue}
+
 		//Check for Realmable children
 		let childType = type(of: child.value)
 		if let t = childType as? RealmableBase.Type {
@@ -291,7 +298,6 @@ fileprivate func addProperties(of value: RealmableBase, to className: AnyClass, 
 			Realm.registerRealmables(t)
 		}
 
-		if ignoreProperties.contains(name) {continue}
 		let typeStr: String
 		let types = exctractTypeComponents(from: child.value)
 		if let base = child.value as? RealmableBase, types.1 != "Optional", types.1 != "nil" {
