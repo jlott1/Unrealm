@@ -28,7 +28,7 @@ public extension Realm {
 	- returns: A `Results` containing the objects.
 	*/
 	func objects<RealmableElement: Realmable>(_ type: RealmableElement.Type) -> Unrealm.Results<RealmableElement> {
-		let fullType = String(reflecting: RealmableElement.self)
+		let fullType = String(reflecting: type)
 		var components = fullType.components(separatedBy: ".")
 		let typeName = components.removeLast()
 		let realmTypeName = RealmableElement.realmClassPrefix + typeName
