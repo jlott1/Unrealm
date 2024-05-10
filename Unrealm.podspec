@@ -35,5 +35,5 @@ Works perfect with Codables and Optionals!
 
   s.dependency 'Realm'
   s.dependency 'RealmSwift'
-  s.dependency 'Runtime', '~> 2.2.6'
+  s.dependency 'Runtime', :git => 'https://github.com/wickwirew/Runtime', :tag => '2.2.6'
 end
