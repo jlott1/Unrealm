@@ -35,5 +35,5 @@ Works perfect with Codables and Optionals!
 
   s.dependency 'Realm'
   s.dependency 'RealmSwift'
-  #s.dependency 'Runtime'
+  s.dependency 'Runtime'
 end
