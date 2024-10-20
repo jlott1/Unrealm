@@ -30,7 +30,7 @@
 
 <p align="center">
 Unrealm enables you to easily store Swift native <b>Classes</b>, <b>Structs</b> and <b>Enums</b> into <a href="https://github.com/realm/realm-cocoa">Realm <img width="18" src = "https://raw.githubusercontent.com/arturdev/Unrealm/assets/realmLogoSmall.png"></a>.<br/>Stop inheriting from <b>Object</b>! Go for Protocol-Oriented programming!<br>
-Made with ❤️ by <a href="https://github.com/arturdev">arturdev</a>
+Made with ❤️ by <a href="https://github.com/matghazaryan">matghazaryan</a>
 </p>
 <br>
 
@@ -67,7 +67,7 @@ All you have to do is
 ```Swift
 Realm.registerRealmables(ToDoItem.self)
 ```
-Thats it! Now you can store your Struct or Class object into Realm as usualy you do with Objc Classes.
+That's it! Now you can store your Struct or Class object into Realm as usually you do with Objc Classes.
 
 ## Pros and Cons 
 
@@ -106,7 +106,7 @@ pod 'Unrealm'
 You can also use Swift Package Manager to add Unrealm as a dependency to your project. In order to do so, use the following URL:
 
 ```bash
-https://github.com/arturdev/Unrealm.git
+https://github.com/matghazaryan/Unrealm.git
 ```
 You need to use "master" branch instead of SPM.
 ## ToDos
@@ -125,7 +125,6 @@ Contributions are welcome, and they are greatly appreciated!
 
 ## Author
 
-arturdev, mkrtarturdev@gmail.com
 matghazaryan, matevos14@gmail.com
 
 ## License
